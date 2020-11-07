@@ -1,0 +1,48 @@
+<launch>
+  <!-- Launch radar-->
+    <!-- Input arguments -->
+  <arg name="device" value="1843" doc="TI mmWave sensor device type [1443, 1642]"/>
+  <arg name="config" value="3d" doc="TI mmWave sensor device configuration [3d_best_range_res (not supported by 1642 EVM), 2d_best_range_res]"/>
+  <arg name="max_allowed_elevation_angle_deg" default="90" doc="Maximum allowed elevation angle in degrees for detected object data [0 > value >= 90]}"/>
+  <arg name="max_allowed_azimuth_angle_deg" default="90" doc="Maximum allowed azimuth angle in degrees for detected object data [0 > value >= 90]}"/>
+
+  <!-- mmWave_Manager node -->
+  <node pkg="ti_mmwave_rospkg" type="ti_mmwave_rospkg" name="ti_mmwave" output="screen">
+    <param name="command_port" value="/dev/ttyACM1"  />
+    <param name="command_rate" value="115200"   />
+    <param name="data_port" value="/dev/ttyACM2"  />
+    <param name="data_rate" value="921600"   />
+    <param name="max_allowed_elevation_angle_deg" value="$(arg max_allowed_elevation_angle_deg)"   />
+    <param name="max_allowed_azimuth_angle_deg" value="$(arg max_allowed_azimuth_angle_deg)"   />
+    <param name="frame_id" value="ti_mmwave"/>
+  </node>
+
+  <!-- mmWaveQuickConfig node (terminates after configuring mmWave sensor) -->
+  <node pkg="ti_mmwave_rospkg" type="mmWaveQuickConfig" name="mmWaveQuickConfig" args="$(find ti_mmwave_rospkg)/cfg/1843_MaxVelRes.cfg" output="screen" />
+
+  <!-- Static transform from map to base_radar_link for visualization of stand-alone mmWave sensor using Rviz -->
+  <!-- <node pkg="tf" type="static_transform_publisher" name="static_tf_map_to_base_radar_link" args="0 0 0 0 0 0 ti_mmwave_pcl ti_mmwave 30"/> -->
+
+  <!-- Launch Rviz with pre-defined configuration to view mmWave sensor detected object data (color by intensity) -->
+  <!--<node pkg="rviz" type="rviz" name="rviz" args="-d $(find ti_mmwave_rospkg)/launch/rviz/ti_mmwave_3d.rviz"/> -->
+
+  <!-- Launch IMU-->
+  <arg name="port" default="/dev/ttyACM0" />
+  <node pkg="rosserial_server" type="serial_node" name="rosserial_server">
+    <param name="port" value="$(arg port)" />
+  </node>
+  <node pkg="rosserial_python" type="message_info_service.py" name="rosserial_message_info" />
+
+  <!-- Transform base frame to radar frame -->
+<node pkg="tf" type="static_transform_publisher" name="tf_base_to_radar" args="-0.048 0.055 0.093 -1.571 0 0 base_link ti_mmwave 30"/>
+<!-- Transform imu frame to base_link frame -->
+<node pkg="tf" type="static_transform_publisher" name="tf_base_to_imu" args="0 0 0 0 0 0 base_link imu 30"/>
+
+
+  <!-- Launch EKF-->
+  <node pkg = "robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
+        <rosparam command="load" file="$(find robot_localization)/params/my_ekf.yaml" />
+
+  </node>
+
+</launch>
