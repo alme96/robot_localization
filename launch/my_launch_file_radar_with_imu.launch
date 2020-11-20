@@ -38,7 +38,7 @@
   <!-- Transform imu frame to base_link frame -->
   <node pkg="tf" type="static_transform_publisher" name="tf_base_to_imu" args="0 0 0 0 0 0 base_link imu 30"/>
 
-  <!-- Rewrite imu message for ekf node -->
+  <!-- Rewrite imu message for ekf node
   <node pkg="topic_tools" type="relay_field" name="rewrite_imu_node" args=" /imu imu_ok sensor_msgs/Imu
     '{
     header:
@@ -49,21 +49,24 @@
                 },
           frame_id: m.header.frame_id
         },
+    orientation_covariance: [-1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
     angular_velocity:
         {
           x: m.angular_velocity.x, y: m.angular_velocity.y, z: m.angular_velocity.z
         },
-    angular_velocity_covariance: [0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01],
+    angular_velocity_covariance: [0.01, 0.0, 0.0, 0.0, 0.01, 0.0, 0.0, 0.0, 0.01],
     linear_acceleration:
         {
           x: m.linear_acceleration.x, y: m.linear_acceleration.y, z: m.linear_acceleration.z
         },
-    linear_acceleration_covariance: [0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01]
+    linear_acceleration_covariance: [0.01, 0.0, 0.0, 0.0, 0.01, 0.0, 0.0, 0.0, 0.01]
      }'">
-    <param name="lazy" value="true"/>
   </node>
 
   <node pkg="rewrite_imu_pkg" type="imu_listener_node" name="imu_listener" />
+-->
+
+  <node pkg="rewrite_imu_pkg" type="rewrite_imu_node" name="rewrite_imu_node" />
 
   <!-- Launch EKF-->
   <node pkg = "robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">

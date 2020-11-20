@@ -61,8 +61,6 @@ Visualization Manager:
           Value: true
         imu:
           Value: true
-        odom:
-          Value: true
         ti_mmwave:
           Value: true
       Marker Scale: 1
@@ -71,12 +69,7 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        odom:
-          base_link:
-            imu:
-              {}
-            ti_mmwave:
-              {}
+        {}
       Update Interval: 0
       Value: true
     - Angle Tolerance: 0.10000000149011612
