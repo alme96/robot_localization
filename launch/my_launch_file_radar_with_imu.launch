@@ -34,7 +34,7 @@
   <node pkg="rosserial_python" type="message_info_service.py" name="rosserial_message_info" />
 
     <!-- Transform base frame to radar frame -->
-  <node pkg="tf" type="static_transform_publisher" name="tf_base_to_radar" args="-0.048 0.055 0.093 -1.571 0 0 base_link ti_mmwave 30"/>
+  <node pkg="tf" type="static_transform_publisher" name="tf_base_to_radar" args="-0.048 0.055 0.093 0.0 0.0 0.0 base_link ti_mmwave 30"/>
   <!-- Transform imu frame to base_link frame -->
   <node pkg="tf" type="static_transform_publisher" name="tf_base_to_imu" args="0 0 0 0 0 0 base_link imu 30"/>
 
