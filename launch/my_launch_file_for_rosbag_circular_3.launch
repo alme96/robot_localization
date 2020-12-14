@@ -1,4 +1,7 @@
 <launch>
+
+  <param name="use_sim_time" value="true"/>
+
   <!-- Launch rosbag-->
   <node pkg="rosbag" type="play" name="player" output="screen" args="--clock /home/menichea/rosbag/test_circular_3.bag"/>
 
@@ -10,11 +13,6 @@
 
   <!-- Launch evaluation node -->
   <!-- <node pkg="rewrite_imu_pkg" type="evaluation_node" name="evaluation_node" /> -->
-
-  <!-- Transform base frame to radar frame -->
-  <node pkg="tf" type="static_transform_publisher" name="tf_base_to_radar" args="-0.048 0.055 0.093 0.0 0.0 0.0 base_link ti_mmwave 30"/>
-  <!-- Transform imu frame to base_link frame -->
-  <node pkg="tf" type="static_transform_publisher" name="tf_base_to_imu" args="0 0 0 0 0 0 base_link imu 30"/>
 
   <!-- Launch EKF-->
   <node pkg = "robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
