@@ -1,6 +1,6 @@
 <launch>
   <!-- Launch rosbag-->
-  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock /home/menichea/rosbag/test_rectangular_2.bag"/>
+  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock /home/menichea/rosbag/test_circular_1.bag"/>
 
   <!-- remap /odometry/filtered to rosbag/ekf_odometry to avoid confusion -->
   <remap from="/odometry/filtered" to="rosbag/ekf_odometry"/>
@@ -23,7 +23,7 @@
   </node>
 
   <!-- transformation from vicon to odom frame (0.0 -2.2797 2.1616)-->
-  <node pkg="tf" type="static_transform_publisher" name="tf_odom_to_vicon" args=" -0.944709439143 1.03761957585 0.897081033867 -1.570796327 0.0 0.0 vicon odom 30"/>
+  <node pkg="tf" type="static_transform_publisher" name="tf_odom_to_vicon" args=" 0.0433292511139 1.59651962079 0.900254262206 3.1414 0.0 0.0 vicon odom 30"/>
 
   <!-- <node pkg="rqt_plot" type="rqt_plot" name="rqt_plot" args="/radar/vrpn_client/estimated_odometry/twist/twist/linear/x /ti_mmwave/radar_odom/twist/twist/linear/x" /> -->
 
