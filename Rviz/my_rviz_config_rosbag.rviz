@@ -7,7 +7,9 @@ Panels:
         - /Global Options1
         - /Status1
         - /Odometry1
+        - /Odometry1/Shape1
         - /Odometry2
+        - /Odometry2/Shape1
         - /PointCloud21
       Splitter Ratio: 0.5
     Tree Height: 728
@@ -77,13 +79,13 @@ Visualization Manager:
       Name: Odometry
       Position Tolerance: 0.10000000149011612
       Shape:
-        Alpha: 1
+        Alpha: 0
         Axes Length: 1
         Axes Radius: 0.10000000149011612
         Color: 255; 25; 0
-        Head Length: 0.30000001192092896
+        Head Length: 0.20000000298023224
         Head Radius: 0.10000000149011612
-        Shaft Length: 1
+        Shaft Length: 0.5
         Shaft Radius: 0.05000000074505806
         Value: Arrow
       Topic: /odometry/filtered
@@ -115,9 +117,9 @@ Visualization Manager:
         Axes Length: 1
         Axes Radius: 0.10000000149011612
         Color: 255; 25; 0
-        Head Length: 0.30000001192092896
+        Head Length: 0.20000000298023224
         Head Radius: 0.10000000149011612
-        Shaft Length: 1
+        Shaft Length: 0.5
         Shaft Radius: 0.05000000074505806
         Value: Arrow
       Topic: /radar/vrpn_client/estimated_odometry
@@ -132,11 +134,7 @@ Visualization Manager:
           Value: true
         imu:
           Value: true
-        map:
-          Value: true
         odom:
-          Value: true
-        radar:
           Value: true
         ti_mmwave:
           Value: true
@@ -148,16 +146,13 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          vicon:
-            odom:
-              base_link:
-                imu:
-                  {}
-                ti_mmwave:
-                  {}
-            radar:
-              {}
+        vicon:
+          odom:
+            base_link:
+              imu:
+                {}
+              ti_mmwave:
+                {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -175,9 +170,9 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 14.600000381469727
+      Max Intensity: 12.399999618530273
       Min Color: 0; 0; 0
-      Min Intensity: 12.300000190734863
+      Min Intensity: 12.399999618530273
       Name: PointCloud2
       Position Transformer: XYZ
       Queue Size: 10
@@ -218,7 +213,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 11.141907691955566
+      Distance: 11.411474227905273
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -233,10 +228,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.5697963237762451
+      Pitch: 1.5647963285446167
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.7353955507278442
+      Yaw: 1.565395712852478
     Saved: ~
 Window Geometry:
   Displays:
