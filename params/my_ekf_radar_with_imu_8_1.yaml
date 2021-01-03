@@ -61,10 +61,10 @@ publish_acceleration: true
 #     3a. Set your "world_frame" to your map_frame value
 #     3b. MAKE SURE something else is generating the odom->base_link transform. Note that this can even be another state
 #         estimation node from robot_localization! However, that instance should *not* fuse the global data.
-# map_frame: map              # Defaults to "map" if unspecified
+# map_frame: vicon              # Defaults to "map" if unspecified
 odom_frame: odom            # Defaults to "odom" if unspecified
 base_link_frame: base_link  # Defaults to "base_link" if unspecified
-world_frame: odom           # Defaults to the value of odom_frame if unspecified
+# world_frame: vicon           # Defaults to the value of odom_frame if unspecified
 
 # The filter accepts an arbitrary number of inputs from each input message type (nav_msgs/Odometry,
 # geometry_msgs/PoseWithCovarianceStamped, geometry_msgs/TwistWithCovarianceStamped,
@@ -252,18 +252,18 @@ initial_estimate_covariance: [1e-9, 0,    0,    0,    0,    0,    0,    0,    0,
                               0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    1e-9]
 
 # initial_state: [-0.0199131557338, 1.65900934246, 0.900144956133,
-#                   3.04, 0.0, 0.0,
+#                   0.0, 0.0, 0.0,
 #                   0.0, 0.0, 0.0,
 #                   0.0, 0.0, 0.0,
 #                   0.0, 0.0, 0.0]
-
+# 
 # initial_state: [-0.0199131557338, 1.65900934246, 0.900144956133,
 #                   0.0020, 3.1563, 0.1767,
 #                   0.0, 0.0, 0.0,
 #                   0.0, 0.0, 0.0,
 #                   0.0, 0.0, 0.0]
 
-initial_state: [-0.0199131557338, 1.65900934246, 0.900144956133,
+initial_state: [0.0, 0.0, 0.0,
                   0.0, 0.0, 0.0,
                   0.0, 0.0, 0.0,
                   0.0, 0.0, 0.0,

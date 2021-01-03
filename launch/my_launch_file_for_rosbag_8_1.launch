@@ -3,7 +3,7 @@
   <param name="use_sim_time" value="true"/>
 
   <!-- Launch rosbag-->
-  <node pkg="rosbag" type="record" name="recorder" args="--all --output-name=results_8_1"/>
+  <node pkg="rosbag" type="record" name="recorder" args="--all --output-name=/home/menichea/results/8_1/normal_LS/results_8_1"/>
   <node pkg="rosbag" type="play" name="player" output="screen" args="--clock /home/menichea/rosbag/test_8_1_filtered.bag"/>
 
   <!-- remap certain topics to avoid confusion -->
@@ -36,7 +36,11 @@
 
 
   <!-- transformation from vicon to odom frame (0.0 -2.2797 2.1616)-->
-  <node pkg="tf" type="static_transform_publisher" name="tf_odom_to_vicon" args=" 0.0 0.0 0.0 0.0 0.0 0.0 vicon odom 30"/>
+  <node pkg="tf" type="static_transform_publisher" name="tf_odom_to_vicon" args="-0.0199131557338 1.65900934246 0.900144956133
+    -0.00984011183584 0.000616954945317 0.998388208726 0.055890752745 vicon odom 30"/>
+
+  <!-- convert ekf message to vicon coordinates -->
+  <node pkg="my_nodes_pkg" type="transform_ekf_node" name="transform_ekf_node" />
 
   <node pkg="rqt_multiplot" type="rqt_multiplot" name="rqt_multiplot" args=" --multiplot-run-all --multiplot-config /home/menichea/catkin_ws/src/robot_localization/rqt_multiplot_config/multiplot_2Dconfig.xml" />
 
