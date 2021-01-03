@@ -13,6 +13,9 @@ Panels:
         - /TF1/Frames1
         - /Odometry3
         - /Odometry3/Shape1
+        - /Odometry3/Covariance1
+        - /Odometry3/Covariance1/Position1
+        - /Odometry3/Covariance1/Orientation1
       Splitter Ratio: 0.4683840870857239
     Tree Height: 728
   - Class: rviz/Selection
@@ -199,20 +202,20 @@ Visualization Manager:
           Scale: 1
           Value: true
         Position:
-          Alpha: 0.30000001192092896
+          Alpha: 0.10000000149011612
           Color: 204; 51; 204
           Scale: 1
           Value: true
         Value: true
       Enabled: true
-      Keep: 100
+      Keep: 114
       Name: Odometry
       Position Tolerance: 0.10000000149011612
       Shape:
         Alpha: 1
         Axes Length: 1
         Axes Radius: 0.10000000149011612
-        Color: 252; 233; 79
+        Color: 196; 160; 0
         Head Length: 0.30000001192092896
         Head Radius: 0.10000000149011612
         Shaft Length: 0.5

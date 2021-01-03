@@ -40,10 +40,10 @@
     -0.00984011183584 0.000616954945317 0.998388208726 0.055890752745 vicon odom 30"/>
 
   <!-- convert ekf message to vicon coordinates -->
-  <node pkg="my_nodes_pkg" type="transform_ekf_node" name="transform_ekf_node" />
+  <node pkg="my_nodes_pkg" type="transform_ekf_node" name="transform_ekf_node" output="screen" />
 
   <node pkg="rqt_multiplot" type="rqt_multiplot" name="rqt_multiplot" args=" --multiplot-run-all --multiplot-config /home/menichea/catkin_ws/src/robot_localization/rqt_multiplot_config/multiplot_2Dconfig.xml" />
 
-  <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robot_localization)/Rviz/my_rviz_config_rosbag.rviz" /> -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robot_localization)/Rviz/my_rviz_config_rosbag.rviz" />
 
 </launch>
