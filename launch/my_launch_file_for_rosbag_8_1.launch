@@ -44,6 +44,6 @@
 
   <node pkg="rqt_multiplot" type="rqt_multiplot" name="rqt_multiplot" args=" --multiplot-run-all --multiplot-config /home/menichea/catkin_ws/src/robot_localization/rqt_multiplot_config/multiplot_2Dconfig.xml" />
 
-  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robot_localization)/Rviz/my_rviz_config_rosbag.rviz" />
+  <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robot_localization)/Rviz/my_rviz_config_rosbag.rviz" /> -->
 
 </launch>
