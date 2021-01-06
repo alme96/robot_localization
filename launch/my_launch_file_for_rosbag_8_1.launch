@@ -3,7 +3,7 @@
   <param name="use_sim_time" value="true"/>
 
   <!-- Launch rosbag-->
-  <node pkg="rosbag" type="record" name="recorder" args="--all --output-name=/home/menichea/SemesterProject_RadialInertialStateEstimation/results/8_1/normal_LS/results_8_1_ekf"/>
+  <node pkg="rosbag" type="record" name="recorder" args="--all --output-name=/home/menichea/SemesterProject_RadialInertialStateEstimation/results/8_1/weighted_LS/results_8_1_ekf"/>
   <node pkg="rosbag" type="play" name="player" output="screen" args="--clock /home/menichea/rosbag/test_8_1_filtered.bag"/>
 
   <!-- remap certain topics to avoid confusion -->
