@@ -1,9 +1,12 @@
 <launch>
 
+  <node pkg="rqt_multiplot" type="rqt_multiplot" name="rqt_multiplot" args=" --multiplot-run-all --multiplot-config /home/menichea/catkin_ws/src/robot_localization/rqt_multiplot_config/multiplot_2Dconfig.xml" />
+
+
   <param name="use_sim_time" value="true"/>
 
   <!-- Launch rosbag-->
-  <node pkg="rosbag" type="record" name="recorder" args="--all --output-name=/home/menichea/SemesterProject_RadialInertialStateEstimation/results/8_1/weighted_LS/results_8_1_ekf"/>
+  <node pkg="rosbag" type="record" name="recorder" args="--all --output-name=/home/menichea/SemesterProject_RadialInertialStateEstimation/results/weighted_LS/constant/wLS_const"/>
   <node pkg="rosbag" type="play" name="player" output="screen" args="--clock /home/menichea/rosbag/test_8_1_filtered.bag"/>
 
   <!-- remap certain topics to avoid confusion -->
@@ -42,8 +45,6 @@
   <!-- convert ekf message to vicon coordinates -->
   <node pkg="my_nodes_pkg" type="transform_ekf_node" name="transform_ekf_node" output="screen" />
 
-  <node pkg="rqt_multiplot" type="rqt_multiplot" name="rqt_multiplot" args=" --multiplot-run-all --multiplot-config /home/menichea/catkin_ws/src/robot_localization/rqt_multiplot_config/multiplot_2Dconfig.xml" />
-
-  <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robot_localization)/Rviz/my_rviz_config_rosbag.rviz" /> -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robot_localization)/Rviz/my_rviz_config_rosbag.rviz" />
 
 </launch>
