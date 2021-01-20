@@ -3,8 +3,8 @@
   <param name="use_sim_time" value="true"/>
 
   <!-- Launch rosbag-->
-  <!-- <node pkg="rosbag" type="record" name="recorder"
-    args="-all -output-name=/home/menichea/SemesterProject_RadialInertialStateEstimation/results/weighted_LS/MC_diag/wLS_MC_diag"/> -->
+  <node pkg="rosbag" type="record" name="recorder"
+    args="--all --output-name=/home/menichea/Desktop/SemesterProject_RadialInertialStateEstimation/results/weighted_LS/MC_full/wLS_r_only"/>
 
   <node pkg="rosbag" type="play" name="player" output="screen" args="--clock /home/menichea/rosbag/test_8_1_filtered.bag"/>
 
@@ -19,7 +19,7 @@
   <node pkg="my_nodes_pkg" type="evaluation_node" name="evaluation_node" output="screen"/>
 
   <!-- Rewrite imu node -->
-  <node pkg="my_nodes_pkg" type="rewrite_imu_node" name="rewrite_imu_node" />
+  <node pkg="my_nodes_pkg" type="rewrite_imu_node" name="rewrite_imu_node" output="screen" />
 
 
   <!-- Launch EKF-->
@@ -46,9 +46,9 @@
 
   <node pkg="my_nodes_pkg" type="pub_sim_dur_node" name="pub_sim_dur_node" output="screen"/>
 
-  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robot_localization)/Rviz/my_rviz_config_rosbag.rviz" />
+  <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robot_localization)/Rviz/my_rviz_config_rosbag.rviz" /> -->
 
-  <!-- <node pkg="rqt_multiplot" type="rqt_multiplot" name="rqt_multiplot"
-    args=" -multiplot-run-all -multiplot-config /home/menichea/SemesterProject_RadialInertialStateEstimation/multiplot_2Dconfig_time.xml" /> -->
+  <node pkg="rqt_multiplot" type="rqt_multiplot" name="rqt_multiplot"
+    args=" --multiplot-run-all --multiplot-config /home/menichea/Desktop/SemesterProject_RadialInertialStateEstimation/multiplot_2Dconfig_time.xml" />
 
 </launch>
