@@ -23,7 +23,7 @@
 
 
   <!-- Launch EKF-->
-  <node pkg = "robot_localization" type="ekf_localization_node" name="ekf_node" clear_params="true">
+  <node pkg = "robot_localization" type="ekf_localization_node" name="ekf_node" clear_params="false">
         <rosparam command="load" file="$(find robot_localization)/params/my_ekf_radar_with_imu_8_1.yaml" />
   </node>
 
@@ -32,7 +32,7 @@
 
 
   <!-- Transform base frame to radar frame -->
-  <node pkg="tf" type="static_transform_publisher" name="tf_base_to_radar" args="-0.048 0.055 0.093 0.0 0.0 0.0 base_link ti_mmwave 30"/>
+  <node pkg="tf" type="static_transform_publisher" name="tf_base_to_radar" args="-0.009 0.038 0.1104 0.0 0.0 0.0 base_link ti_mmwave 30"/>
   <!-- Transform imu frame to base_link frame -->
   <node pkg="tf" type="static_transform_publisher" name="tf_base_to_imu" args="0 0 0 0 0 0 base_link imu 30"/>
 
