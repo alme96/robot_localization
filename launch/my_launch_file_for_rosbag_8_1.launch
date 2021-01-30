@@ -4,7 +4,7 @@
 
   <!-- Launch rosbag-->
   <node pkg="rosbag" type="record" name="recorder"
-    args="--all --output-name=/home/menichea/Desktop/SemesterProject_RadialInertialStateEstimation/results/weighted_LS/MC_full/wLS_r_only"/>
+    args="--all --output-name=/home/menichea/Desktop/SemesterProject_RadialInertialStateEstimation/results/cov1_LS2_true"/>
 
   <node pkg="rosbag" type="play" name="player" output="screen" args="--clock /home/menichea/rosbag/test_8_1_filtered.bag"/>
 
@@ -23,7 +23,7 @@
 
 
   <!-- Launch EKF-->
-  <node pkg = "robot_localization" type="ekf_localization_node" name="ekf_node" clear_params="false">
+  <node pkg = "robot_localization" type="ekf_localization_node" name="ekf_node" clear_params="true">
         <rosparam command="load" file="$(find robot_localization)/params/my_ekf_radar_with_imu_8_1.yaml" />
   </node>
 
