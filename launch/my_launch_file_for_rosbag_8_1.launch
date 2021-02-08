@@ -4,7 +4,7 @@
 
   <!-- Launch rosbag-->
   <node pkg="rosbag" type="record" name="recorder"
-    args="--all --output-name=/home/menichea/Desktop/SemesterProject_RadialInertialStateEstimation/results/cov1_LS2_true"/>
+    args="--all --output-name=/home/menichea/Desktop/SemesterProject_RadialInertialStateEstimation/results/nLS+MC+filterON"/>
 
   <node pkg="rosbag" type="play" name="player" output="screen" args="--clock /home/menichea/rosbag/test_8_1_filtered.bag"/>
 
